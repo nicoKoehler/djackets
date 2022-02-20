@@ -1,3 +1,4 @@
 venv_djangoVue
 vue_djackets/package*
 vue_djackets/node_modules
+djackets/djackets/settings.py
