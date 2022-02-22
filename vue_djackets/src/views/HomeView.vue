@@ -16,18 +16,12 @@
         <h2 class="is-size-2 has-text-centered">Latest Products</h2>
       </div>
 
-      <div class="column is-3" v-for="prod in latestProducts" :key="prod.id">
-        <div class="box">
-          <figure class="image mb-4">
-            <img :src="prod.get_thumbnail" alt="">
-          </figure>
-          <h3 class="is-size-4">{{ prod.name }}</h3>
-          <p class="is-size-6 has-text-grey">${{ prod.price }}</p>
-
-          <router-link :to="prod.get_absolute_url" class="button is-dark mt-4">View Details</router-link>
-
-        </div>
-      </div>
+      <ProductBox
+        v-for="prod in latestProducts"
+        :key="prod.id"
+        :prod="prod"
+      />
+      
     </div>
 
 
@@ -38,6 +32,9 @@
 // @ is an alias to /src
 
 import axios from "axios"
+
+import ProductBox from "@/components/ProductBox"
+
 export default {
   name: 'HomeView',
   data(){
@@ -46,7 +43,7 @@ export default {
     }
   },
   components: {
-
+    ProductBox
   },
   mounted(){
     this.getLatestProducts()
@@ -69,8 +66,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.image{
-  margin: -1.25rem -1.25rem 0 -1.25rem;
-}
-</style>
